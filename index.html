@@ -47,7 +47,7 @@
             text-align: center;
             padding: 5px;
             position: fixed;
-            width: 100%;
+            width: 50%;
             bottom: 0;
         }
         .time {
@@ -57,6 +57,34 @@
             border: 2px solid #000;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #4cae4c;
         }
     </style>
 </head>
