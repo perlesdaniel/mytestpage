@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const rssUrl = 'https://rss.cnn.com/rss/edition.rss'; // Example RSS feed URL
+    const rssUrl = 'http://www.bbc.com/news/10628494'; // Example RSS feed URL
     const rssFeedContainer = document.getElementById('rss-feed');
 
     fetch(rssUrl)
