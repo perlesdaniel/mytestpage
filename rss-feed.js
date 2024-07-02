@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const rssUrl = 'https://www.nytimes.com/services/xml/rss/index.html'; // Example RSS feed URL
+    const rssUrl = 'https://feeds.bbci.co.uk/news/world/rss.xml'; // Example RSS feed URL
     const rssFeedContainer = document.getElementById('rss-feed');
 
     fetch(rssUrl)
