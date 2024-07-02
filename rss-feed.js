@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             html += '</ul>';
 
-            rssFeedContainer.innerHTML = `RSS News ${rssFeedContainer}`;
+            rssFeedContainer.innerHTML = `RSS News ${rssFeedContainer}.`;
         })
         .catch(error => console.error('Error fetching the RSS feed:', error));
 });
