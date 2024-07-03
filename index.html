@@ -207,7 +207,6 @@
     
     <!--Start with TIME Script-->
     <div class="time" id="time"></div>
-    <div class="date" id="date"></div>
     <script>
         function updateTime() {
             const now = new Date();
@@ -222,6 +221,10 @@
         setInterval(updateTime, 1000);
         updateTime(); // Initial call to display time immediately
     </script>
+    <!--Stop with TIME Script-->
+
+    <!--Start with DATE Script-->
+       <div class="date" id="date"></div>
         <script>
             function updateDate() {
                 const now = new Date();
@@ -235,7 +238,7 @@
             setInterval(updateDate, 1000);
             updateDate(); // Initial call to display Date immediately
         </script>
-    <!--End with TIME Script-->
+    <!--End with DATE Script-->
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
