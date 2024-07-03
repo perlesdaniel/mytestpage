@@ -207,6 +207,7 @@
     
     <!--Start with TIME Script-->
     <div class="time" id="time"></div>
+    <div class="date" id="date"></div>
     <script>
         function updateTime() {
             const now = new Date();
@@ -221,6 +222,19 @@
         setInterval(updateTime, 1000);
         updateTime(); // Initial call to display time immediately
     </script>
+        <script>
+            function updateDate() {
+                const now = new Date();
+                const Date = String(now.getDate()).padStart(3, '0');
+                const Month = String(now.getMonth()).padStart(3, '0');
+                const dateString = `${Date}:${Month}`;
+                
+                document.getElementById('date').textContent = dateString;
+            }
+    
+            setInterval(updateDate, 1000);
+            updateDate(); // Initial call to display Date immediately
+        </script>
     <!--End with TIME Script-->
 
     <!--Start of Tawk.to Script-->
