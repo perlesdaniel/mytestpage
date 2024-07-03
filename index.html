@@ -114,12 +114,32 @@
         </div>
     </form>
 
-     <!--Start of rss fee Script-->
-    <h1>RSS News</h1>
-    <div id="rss-feed">Loading...</div>
+     <!--Start of rss feed Section-->
+     <div class="rss-feed">
+        <ul id="rss-feed-list">
+            <!-- RSS feed items will be inserted here -->
+        </ul>
+    </div>
+    <script>
+        async function fetchRSS() {
+            const response = await fetch('https://www.clarin.com/rss/lo-ultimo/');
+            const text = await response.text();
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(text, 'application/xml');
+            const items = xml.querySelectorAll('item');
+            const feedList = document.getElementById('rss-feed-list');
 
-    <script src="rss-feed.js"></script>
-    <!--End of rss fee Script-->
+            items.forEach(item => {
+                const title = item.querySelector('title').textContent;
+                const li = document.createElement('li');
+                li.textContent = title;
+                feedList.appendChild(li);
+            });
+        }
+
+        fetchRSS();
+    </script>
+    <!--End of rss feed Section & Script-->
     
     <!--Start of Temperature API Script-->
     <h1>Current Temperature</h1>
