@@ -205,40 +205,34 @@
     </div>
 
     
-    <!--Start with TIME Script-->
-    <div class="time" id="time"></div>
+    <!--Start with DATE-TIME Script-->
+    
+    <p>The current date and time is:</p>
+    <div id="datetime"></div>
     <script>
-        function updateTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            
-            document.getElementById('time').textContent = timeString;
+        function updateDateTime() {
+            var now = new Date();
+            var day = String(now.getDate()).padStart(2, '0');
+            var month = String(now.getMonth() + 1).padStart(2, '0');
+            var year = now.getFullYear();
+            var hours = String(now.getHours()).padStart(2, '0');
+            var minutes = String(now.getMinutes()).padStart(2, '0');
+            var seconds = String(now.getSeconds()).padStart(2, '0');
+
+            var dateTimeString = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+            document.getElementById('datetime').innerText = dateTimeString;
         }
 
-        setInterval(updateTime, 1000);
-        updateTime(); // Initial call to display time immediately
+        // Update the date and time every second
+        setInterval(updateDateTime, 1000);
+        
+        // Initial call to display the date and time immediately on load
+        updateDateTime();
     </script>
-    <!--Stop with TIME Script-->
 
-    <!--Start with DATE Script-->
-       <div class="date" id="date"></div>
-        <script>
-            function updateDate() {
-                const now = new Date();
-                const Date = String(now.getDate()).padStart(3, '0');
-                const Month = String(now.getMonth()).padStart(3, '0');
-                const dateString = `${Date}:${Month}`;
-                
-                document.getElementById('date').textContent = dateString;
-            }
-    
-            setInterval(updateDate, 1000);
-            updateDate(); // Initial call to display Date immediately
-        </script>
-    <!--End with DATE Script-->
+    <!--Stop with DATE-TIME Script-->
+
+
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
