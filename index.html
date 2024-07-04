@@ -319,8 +319,12 @@
       try {
         const response = await fetch('http://localhost:5000/users');
         const result = await response.json();
+    
         console.log('Data receied from server:' , result)
-        const dataDiv = document.getElementById('users');
+        if (!result || !Array.isArray(result)) {
+            throw new Error('Invalid data format received');
+
+            const dataDiv = document.getElementById('users');
         result.data.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.textContent = JSON.stringify(row);
