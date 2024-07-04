@@ -313,35 +313,81 @@
     
     <!--Start sqlite3 Query-->
 
-  <h1>SQLite3 users</h1>
-    <div id="users"></div>
-    <script>
-    async function fetchData() {
-      try {
-        const response = await fetch('http://localhost:5000/users');
-        const result = await response.json();
-            const dataDiv = document.getElementById('users');
+    <h1>Customer Data</h1>
+    <div id="data-container"></div>
 
-        // Clear the container before appending new data
-        dataDiv.innerHTML = '';
-        // Check if data is empty
-        if (data.length === 0) {
-        dataDiv.textContent = 'No data available';
-        return;
+    <h2>Add New Customer</h2>
+    <form id="customer-form">
+        <label for="id">Name:</label>
+        <input type="int" id="id" name="id" required>
+        <br>
+        <label for="name">Email:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="Email">Phone:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:5000/users');
+                const data = await response.json();
+
+                if (!data || !Array.isArray(data)) {
+                    throw new Error('Invalid data format received');
+                }
+
+                const container = document.getElementById('data-container');
+                container.innerHTML = '';
+
+                if (data.length === 0) {
+                    container.textContent = 'No data available';
+                    return;
+                }
+
+                data.forEach(row => {
+                    const div = document.createElement('div');
+                    div.textContent = JSON.stringify(row);
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                const container = document.getElementById('data-container');
+                container.textContent = `Error fetching data: ${error.message}`;
+            }
         }
 
-        result.data.forEach(row => {
-          const rowDiv = document.createElement('div');
-          rowDiv.textContent = JSON.stringify(row);
-          dataDiv.appendChild(rowDiv);
+        document.getElementById('customer-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const id = document.getElementById('id').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            const newCustomer = { id, name, email };
+
+            try {
+                const response = await fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newCustomer)
+                });
+
+                const result = await response.json();
+                console.log('Result:', result);
+
+                // Fetch and display updated data
+                fetchData();
+            } catch (error) {
+                console.error('Error adding data:', error);
+            }
         });
 
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
+        fetchData();
     </script>
     <!--End sqlite3 Query-->
 
