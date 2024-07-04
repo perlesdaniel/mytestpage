@@ -313,13 +313,13 @@
     
     <!--Start sqlite3 Query-->
     <h1>SQLite3 users</h1>
-  <div id="name"></div>
+  <div id="id"></div>
   <script>
     async function fetchData() {
       try {
         const response = await fetch('http://localhost:5000/users');
         const result = await response.json();
-        const dataDiv = document.getElementById('name');
+        const dataDiv = document.getElementById('id');
         result.data.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.textContent = JSON.stringify(row);
