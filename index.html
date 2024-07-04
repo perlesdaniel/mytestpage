@@ -319,7 +319,7 @@
       try {
         const response = await fetch('http://localhost:5000/users');
         const result = await response.json();
-        const dataDiv = document.getElementById('users');
+        const dataDiv = document.getElementById('name');
         result.data.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.textContent = JSON.stringify(row);
