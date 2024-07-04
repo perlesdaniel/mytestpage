@@ -323,13 +323,13 @@
             const dataDiv = document.getElementById('users');
 
         // Clear the container before appending new data
-        rawdiv.innerHTML = '';
+        dataDiv.innerHTML = '';
         // Check if data is empty
         if (data.length === 0) {
-        rowdiv.textContent = 'No data available';
+        dataDiv.textContent = 'No data available';
         return;
         }
-        
+
         result.data.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.textContent = JSON.stringify(row);
