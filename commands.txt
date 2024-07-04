@@ -1,0 +1,10 @@
+$ sqlite3 dan
+SQLite version 3.36.0 2021-06-18 18:36:39
+Enter ".help" for usage hints.
+sqlite> create table users(one text, two int);
+sqlite> insert into users values('hello!',10);
+sqlite> insert into users values('goodbye', 20);
+sqlite> select * from users;
+hello!|10
+goodbye|20
+sqlite>  .save dan.db

@@ -311,7 +311,29 @@
     <div><iframe style="width:320px;height:260px;border-radius:10px;box-shadow:2px 4px 4px rgb(0 0 0 / 25%);display:flex;justify-content:center;border:1px solid #bcbcbc" src="https://dolarhoy.com/i/cotizaciones/dolar-contado-con-liquidacion" frameborder="0"></iframe></div>
     <!--Stop Dolar Hoy-->
     
-    
+    <!--Start sqlite3 Query-->
+    <h1>SQLite3 Data</h1>
+  <div id="data"></div>
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('http://localhost:5000/data');
+        const result = await response.json();
+        const dataDiv = document.getElementById('data');
+        result.data.forEach(row => {
+          const rowDiv = document.createElement('div');
+          rowDiv.textContent = JSON.stringify(row);
+          dataDiv.appendChild(rowDiv);
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  </script>
+    <!--End sqlite3 Query-->
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
