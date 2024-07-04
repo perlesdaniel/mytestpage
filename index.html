@@ -321,7 +321,8 @@
         const response = await fetch('http://localhost:5000/users');
         const result = await response.json();
             const dataDiv = document.getElementById('users');
-        result.data.forEach(row => {
+        result.data.array.forEach(element => {    
+        });(row => {
           const rowDiv = document.createElement('div');
           rowDiv.textContent = JSON.stringify(row);
           dataDiv.appendChild(rowDiv);
